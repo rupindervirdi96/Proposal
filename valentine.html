@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Love+Light&family=Loved+by+the+King&family=Roboto:wght@100;300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 100px;
+            font-family: 'Love Light', cursive;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            place-items: center;
+            grid-template-rows: 2fr 1fr max-content 3fr;
+            border: 10px solid rgb(255, 107, 107);
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            font-family: 'Loved by the King', cursive;
+            font-size: 40px;
+            font-weight: 400;
+        }
+
+        button {
+            min-height: 60px;
+            min-width: 100px;
+            background-color: white;
+            color: red;
+            font-weight: bold;
+            font-family: 'Love Light', cursive;
+            font-size: 35px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 8px 2px rgba(254, 20, 20, 0.4);
+            margin: 0px 20px;
+            padding: 0px 40px;
+        }
+
+        #No:disabled {
+            color: rgb(253, 158, 158);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="Yes">Yes</button>
+            <button id="No"></button>
+        </div>
+        <p id="result" hidden>Woooohooo, it's a YES</p>
+        <div hidden id="gif-center" class="gif-center">
+            <img id="img" src="" alt="" />
+        </div>
+    </div>
+</body>
+<script>
+    const noOptions = [
+        "No!",
+        "Are you sure?",
+        "Can you bet on that?",
+        "But are you sure that you are sure?",
+        "Pakki gall a fer?",
+        "You wont find another one like me?",
+        "Ni ek vaari hor soch lai..",
+        "Maybe you clicked on NO by mistake",
+        "Roses accepted but proposal not so much. Hmmm",
+        "This me right in the heart",
+        "Can we snuggle and discuss the reason?",
+        "can I at least get a participation trophy?",
+        "Are you sure?",
+        "Are you suree?",
+        "Are you sureeee?",
+        "Are you sureeeeee?",
+        "Are you sureeeeeeee?",
+        "Are you sureeeeeeeeee?",
+        "Are you sureeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?",
+        "Are you sureeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?",
+        "Nevermind! I know you love me.",
+    ];
+    let optionCount = 0;
+    let noBtn = document.querySelector("#No");
+    let yesBtn = document.querySelector("#Yes");
+    let result = document.querySelector("#result");
+    let gif = document.querySelector("#gif-center");
+    let gifImg = document.querySelector("#img");
+    noBtn.innerText = noOptions[optionCount];
+
+    yesBtn.onclick = () => {
+        const gifNb = Math.floor(Math.random() * (6) + 1);
+        console.log(gifNb);
+        noBtn.setAttribute("disabled", "true");
+        result.removeAttribute("hidden");
+        gifImg.src = `./${gifNb}.gif`;
+        gif.removeAttribute("hidden");
+    };
+    noBtn.onclick = () => {
+        if (optionCount === noOptions.length - 1) {
+            noBtn.innerText = noOptions[optionCount];
+            result.removeAttribute("hidden");
+            noBtn.setAttribute("disabled", "true");
+            gifImg.src.replace(`./${gifNb}.gif`);
+            gif.removeAttribute("hidden");
+        } else {
+            optionCount += 1;
+            noBtn.innerText = noOptions[optionCount];
+        }
+    };
+</script>
+
+</html>
